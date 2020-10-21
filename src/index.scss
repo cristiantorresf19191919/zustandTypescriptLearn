@@ -1,0 +1,86 @@
+$primary-color : #707070;
+
+@mixin phone {
+  @media (max-width:450px){
+    @content;
+  }
+}
+
+
+html{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+ 
+  font-family: 'Montserrat', sans-serif;
+  font-size: 16px;
+ 
+
+  color: #707070;
+  height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.App, #root{
+  height: 100vh;
+}
+.mainContainer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 20px;
+  flex-direction: column;  
+  width: calc(100vh / 2);
+  margin: auto;
+  border: 1px solid #222;
+  height: 35rem;
+  transform: translateY(10px);
+  animation: .2s ease-in forwards animateContianer;
+  animation-timing-function: cubic-bezier(0.25, 1, 0.5, 1);
+  @include phone{
+    width: 100%;
+    border: none;
+  }
+  & > div{
+    margin: 1% 0;
+    width: 100%;
+  }
+}
+
+@keyframes animateContianer {
+  from{
+    transform: translateY(10px) scale(.8) translateX(50rem) skew(3deg, -4deg);
+    opacity: 0;
+  }
+  to{
+    transform: translateY(10px) scale(1) translateX(0) skew(0, 0);
+    opacity: 1;
+  }
+}
+
+.flexc-start{
+  display: flex;
+  justify-content: flex-start;
+  
+}
+
+.flexc-center{
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.mt-md{
+  margin-top: 6% !important;
+}
+
+.spacer{
+  margin: 4% 0 !important;
+}
+
+.padding-md{
+  padding: 0 10rem;
+}

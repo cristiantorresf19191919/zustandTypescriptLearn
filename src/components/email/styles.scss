@@ -1,0 +1,23 @@
+@import "../../index.scss";
+
+
+input {
+    border: 1px solid #acacac;
+    border-radius: 25px;
+    width: 100%;
+    padding: 12px;
+    text-align: center;
+    box-sizing: border-box;
+    outline: none;
+}
+
+button{
+    background: #888888 0% 0% no-repeat padding-box;
+border-radius: 29px;
+width: 200px;
+height: 40px;
+color: #fff;
+border: none;
+outline: none;
+
+}

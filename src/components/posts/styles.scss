@@ -1,0 +1,114 @@
+@import "../../index.scss";
+
+@mixin phone {
+  @media (max-width:450px){
+    @content;
+  }
+}
+
+.post-card {
+  color: #acacac;
+  border: 1px solid #acacac;
+  display: flex;
+  align-items: center;
+ padding: 0 6px;
+  border-radius: 41px;
+  .img {
+    border-radius: 18px;
+    align-self: center;
+    margin: auto 0 !important;
+    margin-left: 3%;
+  }
+  .spacer {
+    width: 2rem;
+  }
+  .text-content {
+    font-size: 14px;
+    flex: 1;
+    padding: 4px;
+  }
+}
+
+.popup {
+    position: absolute;
+    top: 10rem;
+    left: 507px;
+    width: 21rem;
+    height: 19rem;
+    z-index: 99;
+    border-radius: 41px;
+    background: white;
+    box-shadow: 1px 2px 4px #22222230;
+    padding: 21px;
+    box-sizing: border-box;
+    @include phone{
+      left: 19px;
+    width: 17rem;
+    height: 19rem;
+    }
+    .closeIcon{
+        font-size: 43px;
+position: absolute;
+top: -37px;
+right: 16px;
+font-weight: 900;
+transform: scale(1);
+transition: all .5s ease;
+cursor: pointer;
+&:hover{
+    transform: scale(1.3);
+}
+    }
+    input{
+        border: 1px solid #acacac;
+border-radius: 25px;
+width: 87%;
+padding: 10px;
+text-align: center;
+box-sizing: border-box;
+outline: none;
+margin: 0 auto;
+display: block;
+    }
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4rem;
+  display: flex;
+  align-items: center;
+
+  box-sizing: border-box;
+  padding: 20px;
+  box-shadow: 1px 2px 6px #22222244;
+  .icon {
+    font-size: 16px;
+    font-weight: 700;
+    display: inline;
+    margin: 0 2%;
+    cursor: pointer;
+    position: relative;
+    .dropDown {
+        position: absolute;
+        z-index: 50;
+        background: white;
+        transition: all .3s ease;
+        border: 1px solid #b3b3b3;
+        padding: 0 18px;
+        border-radius: 21px;
+        opacity: 0;
+        visibility: hidden;
+        transform: scale(0.89);
+    }
+  }
+}
+
+.bottom-position{
+    position: absolute;
+    bottom: 10px;
+
+}
+
