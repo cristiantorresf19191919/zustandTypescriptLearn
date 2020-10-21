@@ -1,24 +1,35 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import logo from './logo.svg';
+import EmailComponent from './components/email/index'
+import PasswordComponent from './components/password/index'
+import PostComponent from './components/posts/index'
 import './App.css';
+import {setAuthToken} from './utils/token'
+import {
+  BrowserRouter as Router,
+  Route
+} from "react-router-dom";
+import { initDB } from 'react-indexed-db';
+import { DBConfig } from './DBConfig';
+
+initDB(DBConfig)
 
 function App() {
+  if (localStorage.emailToken) {
+    setAuthToken(localStorage.emailToken)
+  }
+  useEffect(()=>{
+   
+  },[])
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Router>
+        <Route exact path="/" component={EmailComponent}></Route>
+        <Route exact path="/email" component={EmailComponent}></Route>
+        <Route exact path="/password" component={PasswordComponent}></Route>        
+        <Route exact path="/posts" component={PostComponent}></Route>        
+      </Router>
     </div>
   );
 }
