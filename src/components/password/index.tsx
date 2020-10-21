@@ -61,6 +61,10 @@ const Index: React.FC<propsDefault> = ({ location, history }) => {
     setPassword(e.target.value);
   }
 
+  const goBack = () => {
+    history.push("/");
+  }
+
   useEffect(() => {
     const id = location.state.id as string;
     setId(id);
@@ -72,6 +76,7 @@ const Index: React.FC<propsDefault> = ({ location, history }) => {
   return (
     <>
       <div className="mainContainer">
+      <p className="backButton" onClick={goBack}>&lt;</p>
         <div className="flexc-center">
           <p className="lead">
             <b>{email}</b>

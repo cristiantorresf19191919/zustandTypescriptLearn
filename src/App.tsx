@@ -23,14 +23,14 @@ function App() {
   },[])
 
   return (
-    <div className="App">
+
       <Router>
         <Route exact path="/" component={EmailComponent}></Route>
         <Route exact path="/email" component={EmailComponent}></Route>
         <Route exact path="/password" component={PasswordComponent}></Route>        
         <Route exact path="/posts" component={PostComponent}></Route>        
       </Router>
-    </div>
+  
   );
 }
 

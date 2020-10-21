@@ -1,11 +1,14 @@
 $primary-color : #707070;
 
 @mixin phone {
-  @media (max-width:450px){
+  @media (max-width:550px){
     @content;
   }
 }
 
+#root{
+  height: 100vh;
+}
 
 html{
   padding: 0;
@@ -13,20 +16,20 @@ html{
   box-sizing: border-box;
 }
 
+html > * {
+  box-sizing: border-box;
+}
+
 body {
  
   font-family: 'Montserrat', sans-serif;
   font-size: 16px;
- 
-
   color: #707070;
-  height: 100vh;
+
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-.App, #root{
-  height: 100vh;
-}
+
 .mainContainer{
   display: flex;
   justify-content: center;
@@ -37,11 +40,14 @@ body {
   margin: auto;
   border: 1px solid #222;
   height: 35rem;
-  transform: translateY(10px);
+  transform: translateY(10px) scale(1) translateX(0) skew(0, 0);
   animation: .2s ease-in forwards animateContianer;
   animation-timing-function: cubic-bezier(0.25, 1, 0.5, 1);
   @include phone{
+    padding: 10px;
     width: 100%;
+    height: 100%;
+    box-sizing: border-box;
     border: none;
   }
   & > div{

@@ -17,6 +17,8 @@ const PopupComponent:React.FC<Partial<Form>> = ({closePopup}) => {
         image: File
     })
     return (
+        <div className="popupBackground">
+
         <div className="popup">
             <p className="closeIcon" onClick={closePopup}>&times;</p>
             <h1>Add a Post</h1>
@@ -26,6 +28,7 @@ const PopupComponent:React.FC<Partial<Form>> = ({closePopup}) => {
             <br/>
             <input type="file" placeholder="imagen"/>
             
+        </div>
         </div>
     )
 }
