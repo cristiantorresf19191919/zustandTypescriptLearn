@@ -11,25 +11,23 @@ import {
 } from "react-router-dom";
 import { initDB } from 'react-indexed-db';
 import { DBConfig } from './DBConfig';
-
-initDB(DBConfig)
-
+const inicie:any = initDB;
+inicie(DBConfig)
 function App() {
+
   if (localStorage.emailToken) {
     setAuthToken(localStorage.emailToken)
-  }
-  useEffect(()=>{
-   
-  },[])
-
+  }  
   return (
-
-      <Router>
+    <>
+      <h1>learn react</h1>
+      <Router>        
         <Route exact path="/" component={EmailComponent}></Route>
         <Route exact path="/email" component={EmailComponent}></Route>
         <Route exact path="/password" component={PasswordComponent}></Route>        
         <Route exact path="/posts" component={PostComponent}></Route>        
       </Router>
+    </>
   
   );
 }
