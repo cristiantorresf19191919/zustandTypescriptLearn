@@ -9,7 +9,7 @@ type PostProps = {
 export const PostItem:React.FC<PostProps> = ({content,title,image}) => {
 
     return (
-        <div className="padding-md">
+   
 
         <div className="post-card">
             <div >
@@ -22,6 +22,6 @@ export const PostItem:React.FC<PostProps> = ({content,title,image}) => {
             </div>
             
         </div>
-        </div>
+       
     )
 }

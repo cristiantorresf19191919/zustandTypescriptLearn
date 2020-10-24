@@ -11,6 +11,7 @@ export type AuthState = {
     logOut:() => Promise<boolean | undefined>,
     mainToken:string,
     increasePopulation: () => void,
+    postsLoaded:boolean,
     removeAllBears: () => void,
     signInAction: (password: string) => Promise<true | undefined>,
     emailTokenAction : (email:string) => Promise<true | undefined>
@@ -45,6 +46,7 @@ export const useAuthStore = create<AuthState>((set:SetState<AuthState>, get:GetS
     bears:0,
     name:"",
     posts:[],
+    postsLoaded:false,
     mainToken:"",
     increasePopulation: (): void => {
         const {bears} = get();
@@ -101,10 +103,15 @@ export const useAuthStore = create<AuthState>((set:SetState<AuthState>, get:GetS
         try{
             const response = await Axios.get(`${server_Url}/posts`,config);
             const responseBody = response.data as PostResponse;
-            set({posts: responseBody})
+            set({posts: responseBody, postsLoaded:true})
+            const state = get();
+            
 
         }catch(err){
-            console.log('error');
+            console.log('error en cargar los posts ',err);
+   
+         
+
         }
      
 
@@ -113,7 +120,7 @@ export const useAuthStore = create<AuthState>((set:SetState<AuthState>, get:GetS
     logOut: async () => {
         localStorage.removeItem("mainToken");
         localStorage.removeItem("emailToken");
-        set({emailToken:"", name:""});
+        set({emailToken:"", name:"", postsLoaded:false});
         return true;
     }
 }))
