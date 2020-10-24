@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import { withRouter } from "react-router-dom";
 import { useAuthStore, AuthState } from "../../store";
 import { PostItem } from "./PostItem";
@@ -19,9 +19,9 @@ interface Props extends RouteComponentProps<any> {}
 type PostProps = Props & locprops;
 const Index: React.FC<PostProps> = ({ history, location }) => {
   const { deleteRecord } = useIndexedDB("user");
-  const { posts, loadPosts, name, logOut } = useAuthStore();
+  const {loadPosts, name, logOut } = useAuthStore();
   const postsLoaded:boolean = useAuthStore(state => state.postsLoaded);
-
+  const posts = useAuthStore(state =>state.posts);
   const [popUpOpen, setPopUp] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
 
@@ -49,14 +49,16 @@ const Index: React.FC<PostProps> = ({ history, location }) => {
     console.log("use effect");
   }, []);
 
-  useEffect(()=>{
-   // if post loaded are false token expiration return
-   if (!postsLoaded && !(posts.length > 0)) {
-  
-    history.push("/email");
-    console.log("no hay posts");
-  }
-  },[posts])
+
+
+  const checkPosts = useCallback(
+    () => {
+      if (!postsLoaded){
+        history.push("/email");
+      }
+    },
+    [posts],
+  )
   return (
     <>
       <div className="mainContainer">

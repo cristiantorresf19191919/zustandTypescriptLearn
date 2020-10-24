@@ -3,6 +3,8 @@ import Axios from 'axios'
 import { devtools } from 'zustand/middleware'
 import { deleteHeaderAuth, setAuthToken } from '../utils/token'
 
+
+
 export type AuthState = {
     emailToken: string,
     bears: number,
@@ -109,6 +111,7 @@ export const useAuthStore = create<AuthState>((set:SetState<AuthState>, get:GetS
 
         }catch(err){
             console.log('error en cargar los posts ',err);
+            set({postsLoaded:true})
    
          
 
